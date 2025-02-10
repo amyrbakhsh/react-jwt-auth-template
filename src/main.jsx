@@ -5,13 +5,16 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router' // add import for BrowserRouter
 import './index.css'
 import App from './App.jsx'
+import { UserProvider } from './context/UserContext.jsx'
 
 // Wrap the App component with the BrowserRouter component to enable
 // enable route handling throughout your application.
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
     <BrowserRouter>
+    <UserProvider>
       <App />
+    </UserProvider>
     </BrowserRouter>
-  </React.StrictMode>,
+  </StrictMode>,
 )
