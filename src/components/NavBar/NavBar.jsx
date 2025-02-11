@@ -7,17 +7,24 @@ import { UserContext } from '../../context/UserContext';
 
 const NavBar = () => {
 
-  const {user} = useContext(UserContext)
+  const {user, setUser } = useContext(UserContext)
+
+  const handleSignOut = () => {
+    localStorage.removeItem('token')
+    setUser(null);
+  }
   return (
     <nav>
       {user ? (
         <ul>
           <li>Welcome, {user.name}</li>
+          <li><Link to='/' onClick={handleSignOut}>Sign Out</Link></li>
           <li><Link to='/'>Home</Link></li>
         </ul>
         ):(
         <ul>
           <li><Link to='/sign-up'>Sign Up</Link></li>
+          <li><Link to='/sign-in'>Sign In</Link></li>
         </ul>
         )}
     </nav>
