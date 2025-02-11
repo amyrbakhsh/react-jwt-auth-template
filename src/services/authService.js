@@ -46,11 +46,10 @@ const signIn = async (formData) => {
       localStorage.setItem('token', data.token);
       return JSON.parse(atob(data.token.split('.')[1])).payload;
     }
-    
   } catch (err) {
     console.log(err)
     throw new Error(err)
-    }
+  }
 }
 
 export {
